@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Option</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        /* Initially hide the input field */
+        .input-id {
+            display: none;
+        }
+        /* Setting the background image */
+        body {
+            background-image: url('/static/background.jpeg');
+            background-size: cover; /* Cover the entire page */
+            background-position: center; /* Center the background image */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Spotify Playlist Penetrator</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/others">Others</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+
+<div class="container">
+    <h2 class="mb-4">Choose an Option</h2>
+    <form action="/selection" method="POST">
+        <div class="form-group">
+            <label for="selectOption">Select Playlist or User</label>
+            <select class="form-control" id="selectOption" name="selection" onchange="toggleInputField()">
+                <option value="playlist">Playlist</option>
+                <option value="userId">User ID</option>
+            </select>
+        </div>
+        <!-- Input field for ID -->
+        <div class="form-group input-id">
+            <label for="idInput">Enter ID</label>
+            <input type="text" class="form-control" id="idInput" name="idInput" placeholder="Enter ID">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Optional JavaScript and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function toggleInputField() {
+        // Get the selected option value
+        var selection = document.getElementById("selectOption").value;
+        // Toggle the input field based on selection
+        var inputField = document.querySelector(".input-id");
+        if (selection === "playlist" || selection === "userId") {
+            inputField.style.display = "block";
+        } else {
+            inputField.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

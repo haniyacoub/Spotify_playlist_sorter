@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Playlist Analysis</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Songs List -->
+        <h2 class="mb-3">List of Songs</h2>
+        <div>{{ songs_html|safe }}</div>
+
+        <!-- Cluster Visualization -->
+        <h2 class="mt-5 mb-3">Cluster Visualization</h2>
+        <div>{{ cluster_viz_html|safe }}</div>
+
+        <!-- Assuming 'feature_distribution_htmls' is a list of Plotly visualizations for feature distributions -->
+        <h2 class="mt-5 mb-3">Feature Distributions</h2>
+        {% for html in feature_distribution_htmls %}
+            <div class="mb-4">{{ html|safe }}</div>
+        {% endfor %}
+
+        <!-- Songs Categorized by Mood -->
+        <h2 class="mt-5 mb-3">Songs Categorized by Mood</h2>
+        {% for mood, html in cluster_tables_html.items() %}
+            <h3 class="mt-4">{{ mood }}</h3>
+            <div>{{ html|safe }}</div>
+        {% endfor %}
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

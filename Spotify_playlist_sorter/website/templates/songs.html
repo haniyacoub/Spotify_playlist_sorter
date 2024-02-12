@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song List and Clusters</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Songs in Playlist</h2>
+    <ul class="list-group">
+        {% for song in songs %}
+        <li class="list-group-item">{{ song['name'] }} by {{ song['artists'] | join(', ') }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Cluster Visualization</h2>
+    <!-- This is where the Plotly visualization will be inserted -->
+    <div>{{ cluster_viz_html|safe }}</div>
+</div>
+</body>
+</html>
